@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,40 +16,37 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { float32ndarray, typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute the variance of a one-dimensional single-precision floating-point ndarray using a one-pass trial mean algorithm.
+* Computes the variance of a one-dimensional single-precision floating-point ndarray using a one-pass trial mean algorithm.
 *
-* @module @stdlib/stats-base-ndarray-svariancech
+* @param arrays - array-like object containing a one-dimensional input ndarray and a zero-dimensional ndarray specifying a degrees of freedom adjustment
+* @returns variance
 *
 * @example
-* var Float32Array = require( '@stdlib/array-float32' );
+* var ndarray = require( '@stdlib/ndarray-base-ctor' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var ndarray = require( '@stdlib/ndarray-ctor' );
-* var svariancech = require( '@stdlib/stats-base-ndarray-svariancech' );
+* var Float32Array = require( '@stdlib/array-float32' );
 *
 * var opts = {
 *     'dtype': 'float32'
 * };
 *
-* // Define a one-dimensional input ndarray:
 * var xbuf = new Float32Array( [ 1.0, -2.0, 2.0 ] );
 * var x = new ndarray( opts.dtype, xbuf, [ 3 ], [ 1 ], 0, 'row-major' );
-*
-* // Specify the degrees of freedom adjustment:
 * var correction = scalar2ndarray( 1.0, opts );
 *
-* // Compute the variance:
 * var v = svariancech( [ x, correction ] );
 * // returns ~4.3333
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function svariancech<T extends typedndarray<number> = typedndarray<number>>( arrays: [ float32ndarray, T ] ): number;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = svariancech;
